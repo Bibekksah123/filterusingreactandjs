@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filter Product</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      background: #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .container {
+      overflow: hidden;
+      width: 350px;
+      background: #fff;
+      height: 700px;
+      border-radius: 20px;
+      box-shadow: 5px 5px grey, -5px 5px white;
+      padding: 20px 20px;
+    }
+    .container form {
+      width: 100px;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+    .container form input {
+      border-radius: 10px;
+      width: 300px;
+      height: 30px;
+      border: 0;
+      outline: 0;
+    }
+    .product-list {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .product {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+    .product img {
+      width: 80px;
+      height: 80px;
+    }
+    .detail h2 {
+      font-size: 20px;
+      padding-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <section class="container">
+    <form>
+      <span class="material-symbols-outlined">
+        search
+      </span>
+      <input type="text" id="search-input" placeholder="Search product here..." onkeyup="search()">
+    </form>
+    <div class="product-list" id="product-list">
+      <div class="product">
+        <img src="product-1.jpg" alt="">
+        <div class="detail">
+          <h2>T-shirt For women</h2>
+          <h3><del>$50</del>$30</h3>
+        </div>
+      </div>
+      <div class="product">
+        <img src="product-2.jpg" alt="">
+        <div class="detail">
+          <h2>Bag</h2>
+          <h3><del>$50</del>$30</h3>
+        </div>
+      </div>
+      <div class="product">
+        <img src="product-3.jpg" alt="">
+        <div class="detail">
+          <h2>Hoodie</h2>
+          <h3><del>$50</del>$30</h3>
+        </div>
+      </div>
+      <div class="product">
+        <img src="product-4.jpg" alt="">
+        <div class="detail">
+          <h2>Hoodie</h2>
+          <h3><del>$50</del>$30</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const search = () => {
+      const searchItem = document.querySelector('#search-input').value.toUpperCase();
+      const productList = document.querySelectorAll('.product');
+      const productNames = document.querySelectorAll('.product h2');
+
+      for (let i = 0; i < productNames.length; i++) {
+        const textValue = productNames[i].textContent || productNames[i].innerText;
+
+        if (textValue.toUpperCase().indexOf(searchItem) > -1) {
+          productList[i].style.display = 'flex'; // Correct display style for flex container
+        } else {
+          productList[i].style.display = 'none';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
